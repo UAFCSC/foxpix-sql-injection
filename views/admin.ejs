@@ -1,0 +1,41 @@
+<html lang="en">
+
+<head>
+  <title>Foxes! - Administration</title>
+  <%- include('_partials/head') %>
+</head>
+
+<body>
+  <h1>Administration</h1>
+
+  <a name="me" rel="nofollow"></a>  
+  <%- include('_partials/nav') %>
+  <hr>
+
+  
+  <h2>Add Fox</h2>
+  <% if (locals.flash) { %>
+    <p style="color: red"><%= flash %></p>
+  <% } %>
+  <form action="/admin" method="post">
+    <label for="description">Description:</label>
+    <br>
+    <textarea name="description" id="description" required><%= locals.fox?.description ?? '' %></textarea>
+    <br>
+    <label for="url">Image URL:</label>
+    <br>
+    <input type="text" name="url" id="url" value="<%= locals.fox?.url ?? '' %>" required>
+    <br>
+    <input type="hidden" name="actionId" value="<%= locals.fox?.id ?? '' %><">
+    <% if (locals.fox) { %>
+      <input type="submit" value="Save Fox!">
+    <% } else { %>
+      <input type="submit" value="Add Fox!">
+    <% } %>
+  </form>
+
+  <hr>
+  <center><img src="https://vistaserv.this-is-a-l.ink/requests/injection-tracker"></center>
+</body>
+
+</html>

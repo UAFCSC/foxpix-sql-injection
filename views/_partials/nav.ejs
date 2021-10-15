@@ -1,0 +1,41 @@
+<table>
+  <tbody>
+    <tr>
+      <td colspan="2">
+        <form action="/search" method="post">
+          <input type="text" name="query" id="query" placeholder="Search...">
+          <input type="submit" value="Submit">
+        </form>
+      </td>
+      <td>
+        <% if (req.user) { %>
+          Logged in as <%= req.user.username %>! <a href="/logout">Log Out</a>.
+          <% if (req.user.admin) { %>
+            <a href="/admin">Admin Dashboard</a>.
+          <% } %>
+        <% } else { %>
+          Hello anonymous! <a href="/login">Log In.</a>
+        <% } %>
+      </td>
+    </tr>
+    <tr>
+      <td><a href="/" rel="nofollow">Home</a></td>
+      <td><a href="/#news" rel="nofollow">Foxes in News</a></td>
+      <td colspan="2"><a href="/#pictures" rel="nofollow">Fox Pictures</a></td>
+    </tr>
+    <tr>
+      <td>
+        <img src="https://this-is-a-l.ink/with/katlyn.gif" height="100">
+      </td>
+      <td colspan="3">
+        <p>
+          Hiya! My name is Katlyn, and I happen to be of the opinion that foxes are the best. Here I keep my curated
+          listing of fox pictures, all streamed right to your PC in the highest web-safe quality!
+          <br>
+          Have a great day!
+        </p>
+
+      </td>
+    </tr>
+  </tbody>
+</table>

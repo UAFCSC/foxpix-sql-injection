@@ -1,0 +1,39 @@
+<html lang="en">
+
+<head>
+  <title>Foxes! - Search</title>
+  <%- include('_partials/head') %>
+</head>
+
+<body>
+  <h1>Search</h1>
+
+  <a name="me" rel="nofollow"></a>  
+  <%- include('_partials/nav') %>
+  <hr>
+  
+  <p>
+    Results for "<%= query %>"
+  </p>
+
+  <table>
+  <% if (foxes.length === 0) { %>
+    <tr>
+      <td><p style="color: red;">No results!</p></td>
+    </tr>
+  <% } %>
+
+  <% for (const fox of foxes) { %>
+    <tr>
+      <td><a href="/foxes?fox=<%= fox.id %>"><img src="<%= fox.url %>" alt="<%= fox.description %>"></a></td>
+      <td><%= fox.description %></td>
+      <td>Liked <%= fox.likes %> times</td>
+    </tr>
+  <% } %>
+  </table>
+
+  <hr>
+  <center><img src="https://vistaserv.this-is-a-l.ink/requests/injection-tracker"></center>
+</body>
+
+</html>

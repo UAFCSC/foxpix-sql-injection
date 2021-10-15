@@ -1,0 +1,53 @@
+<html lang="en">
+
+<head>
+  <title>Foxes!</title>
+  <%- include('_partials/head') %>
+</head>
+
+<body>
+  <h1>Foxes are neat</h1>
+
+  <a name="me" rel="nofollow"></a>
+  <%- include('_partials/nav') %>
+
+  <hr>
+  <a name="news" rel="nofollow"></a>
+  <h2>Foxes in the News</h2>
+  <p>Here I'll keep a little curated list of news stories that have to do with the cutest animals.</p>
+  <ul>
+    <li>2021-10-09 - <a href="https://www.si.com/college/2021/10/09/fox-runs-field-red-river-rivalry-cotton-bowl-video">
+        Fox Runs Onto Field at Cotton Bowl During Red River Showdown</a></li>
+    <li>2021-10-08 - <a href="https://toronto.ctvnews.ca/1.5616913">Toronto Zoo asks for help finding red fox that
+        escaped</a></li>
+    <li>2020-05-15 - <a href="https://www.bbc.com/news/uk-england-essex-52673806" rel="nofollow">'Big-eared' fox cub
+        gets head stuck in vase in Basildon</a></li>
+    <li>2020-05-19 - <a href="https://www.nytimes.com/2020/05/18/world/canada/toronto-coronavirus-foxes.html"
+        rel="nofollow">Toronto Was Obeying Social Distance Rules. Then Came Adorable Baby Foxes.</a></li>
+    <li>2020-05-21 - <a
+        href="https://www.12news.com/article/life/animals/tempe-family-saves-baby-fox-that-followed-them-home/75-f72c2b43-58dd-4a61-b0e4-b84e868edefc"
+        rel="nofollow">Tempe Family Saves Baby Fox That Followed Them Home</a></li>
+  </ul>
+
+  <hr>
+  <a name="pictures" rel="nofollow"></a>
+  <h2>Lots of Foxes</h2>
+  <p>Just to prove to you that foxes are the best, here are lots of fox pictures that I've collected. Click one for more info!</p>
+
+  <center>
+    <% for (const fox of foxes) { %>
+      <a href="/foxes?fox=<%= fox.id %>">
+        <img src="<%= fox.url %>" alt="<%= fox.description %>" title="<%= fox.description %>">
+      </a>
+    <% } %>
+  </center>
+
+  <p>
+    As you can see, foxes are the best.
+  </p>
+
+  <hr>
+  <center><img src="https://vistaserv.this-is-a-l.ink/requests/injection-tracker"></center>
+</body>
+
+</html>

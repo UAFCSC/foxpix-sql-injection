@@ -1,0 +1,30 @@
+<html lang="en">
+
+<head>
+  <title>Foxes! - Log In</title>
+  <%- include('_partials/head') %>
+</head>
+
+<body>
+  <h1>Account Creation</h1>
+
+  <a name="me" rel="nofollow"></a>  
+  <%- include('_partials/nav') %>
+  <hr>
+  <p>Make sure your password is nice and secure!</p>
+  <% if (locals.flash) { %>
+    <p style="color: red"><%= flash %></p>
+  <% } %>
+  <form action="/create-account" method="post">
+    <label for="username">Username:</label>
+    <input type="text" name="username" id="username" required>
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password" required>
+    <input type="submit" value="Create Account">
+  </form>
+
+  <hr>
+  <center><img src="https://vistaserv.this-is-a-l.ink/requests/injection-tracker"></center>
+</body>
+
+</html>

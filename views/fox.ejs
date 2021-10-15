@@ -1,0 +1,58 @@
+<html lang="en">
+
+<head>
+  <title>Foxes! - View Fox</title>
+  <%- include('_partials/head') %>
+</head>
+
+<body>
+  <h1>View Fox</h1>
+
+  <a name="me" rel="nofollow"></a>  
+  <%- include('_partials/nav') %>
+  <hr>
+  
+  <% if (locals.fox) { %>
+    <img src="<%= fox.url %>" alt="<%= fox.description %>" title="<%= fox.description %>">
+    <p><%= fox.description %></p>
+    <p>This fox has <%= fox.likes %> likes!</p>
+
+    <% if (locals.flash) { %>
+      <p style="color: red"><%= flash %></p>
+    <% } %>
+    <table>
+      <tr>
+        <td>
+          <form action="" method="post">
+            <input type="hidden" name="action" value="like">
+            <input type="hidden" name="actionId" value="<%= fox.id %>">
+            <input type="submit" value="Like Fox">
+          </form>
+        </td>
+        <% if (req.user?.admin) { %>
+        <td>
+          <form action="/admin" method="post">
+            <input type="hidden" name="action" value="view-edit">
+            <input type="hidden" name="actionId" value="<%= fox.id %>">
+            <input type="submit" value="Edit Fox">
+          </form>
+        </td>
+        <td>
+          <form action="/admin" method="post">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="actionId" value="<%= fox.id %>">
+            <input type="submit" value="Delete Fox">
+          </form>
+        </td>
+      </tr>
+      <% } %>
+    </table>
+  <% } else { %>
+    <p style="color: red;">Fox not found!</p>
+  <% } %>
+
+  <hr>
+  <center><img src="https://vistaserv.this-is-a-l.ink/requests/injection-tracker"></center>
+</body>
+
+</html>

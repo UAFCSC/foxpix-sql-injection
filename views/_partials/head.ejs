@@ -1,0 +1,189 @@
+<style>
+  body {
+    width: 800px;
+    margin: 8px auto;
+    overflow-y: scroll;
+  }
+
+  body, input, textarea {
+    font-family: "Times New Roman", Times, serif;
+    color: black;
+    background: lightgray;
+    -webkit-font-smoothing: none;
+    text-rendering: geometricPrecision;
+    color: #333;
+    box-sizing: border-box;
+  }
+
+  /* This makes tables look old-timey: */
+  table {
+    margin: 0 auto;
+    /* this centers the nav bar, which is a table */
+    border-top: 1px solid #c0c0c0;
+    border-left: 1px solid #c0c0c0;
+    border-bottom: 1px solid #808080;
+    border-right: 1px solid #808080;
+  }
+
+  table form {
+    margin-block-end: 0;
+  }
+
+  th,
+  td {
+    padding: 5px;
+    border-top: 1px solid #808080;
+    border-left: 1px solid #808080;
+    border-bottom: 1px solid #c0c0c0;
+    border-right: 1px solid #c0c0c0;
+    background: rgba(255, 255, 255, 0.5);
+    /* semi-transparent white */
+  }
+
+  /* Here's your special divider style, if you chose one: */
+  hr {
+    border: none;
+    background: url("https://this-is-a-l.ink/with/foxes/pixel.png");
+    height: 48px;
+    background-size: contain;
+    background-repeat: space;
+    margin: 0 auto;
+    /* center the horizontal rule */
+  }
+
+  /* Pixels are nice */
+  html {
+    image-rendering: optimizeSpeed;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -o-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: pixelated;
+    image-rendering: optimize-contrast;
+    -ms-interpolation-mode: nearest-neighbor;
+    cursor: url("https://this-is-a-l.ink/with/foxes/cursor.ani"),
+      url("https://this-is-a-l.ink/with/foxes/cursor.gif"), auto;
+  }
+
+  body,
+  p,
+  ol,
+  ul,
+  td, input, textarea {
+    font-family: "Times Pixelated 16", "Times New Roman", serif;
+    font-size: 16px;
+    line-height: 18px;
+  }
+
+  h1 {
+    font-family: "Times Pixelated 32", "Times New Roman", serif;
+    font-size: 32px;
+  }
+
+  h2 {
+    font-family: "Times Pixelated 24", "Times New Roman", serif;
+    font-size: 24px;
+  }
+
+  h3,
+  h4 {
+    font-family: "Times Pixelated 16", "Times New Roman", serif;
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  @font-face {
+    font-family: "Times Pixelated 16";
+    src: url(https://this-is-a-l.ink/fonts/pixelated/times/TIMES.TTF-16-Regular.woff) format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap
+  }
+
+  @font-face {
+    font-family: "Times Pixelated 16";
+    src: url(https://this-is-a-l.ink/fonts/pixelated/times/TIMESI.TTF-16-Italic.woff) format("woff");
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap
+  }
+
+  @font-face {
+    font-family: "Times Pixelated 16";
+    src: url(https://this-is-a-l.ink/fonts/pixelated/times/TIMESBD.TTF-16-Bold.woff) format("woff");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap
+  }
+
+  @font-face {
+    font-family: "Times Pixelated 16";
+    src: url(https://this-is-a-l.ink/fonts/pixelated/times/TIMESBI.TTF-16-BoldItalic.woff) format("woff");
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap
+  }
+
+  @font-face {
+    font-family: "Times Pixelated 24";
+    src: url(https://this-is-a-l.ink/fonts/pixelated/times/TIMES.TTF-24-Regular.woff) format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap
+  }
+
+  @font-face {
+    font-family: "Times Pixelated 24";
+    src: url(https://this-is-a-l.ink/fonts/pixelated/times/TIMESI.TTF-24-Italic.woff) format("woff");
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap
+  }
+
+  @font-face {
+    font-family: "Times Pixelated 24";
+    src: url(https://this-is-a-l.ink/fonts/pixelated/times/TIMESBD.TTF-24-Bold.woff) format("woff");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap
+  }
+
+  @font-face {
+    font-family: "Times Pixelated 24";
+    src: url(https://this-is-a-l.ink/fonts/pixelated/times/TIMESBI.TTF-24-BoldItalic.woff) format("woff");
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap
+  }
+
+  @font-face {
+    font-family: "Times Pixelated 32";
+    src: url(https://this-is-a-l.ink/fonts/pixelated/times/TIMES.TTF-32-Regular.woff) format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap
+  }
+
+  @font-face {
+    font-family: "Times Pixelated 32";
+    src: url(https://this-is-a-l.ink/fonts/pixelated/times/TIMESI.TTF-32-Italic.woff) format("woff");
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap
+  }
+
+  @font-face {
+    font-family: "Times Pixelated 32";
+    src: url(https://this-is-a-l.ink/fonts/pixelated/times/TIMESBD.TTF-32-Bold.woff) format("woff");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap
+  }
+
+  @font-face {
+    font-family: "Times Pixelated 32";
+    src: url(https://this-is-a-l.ink/fonts/pixelated/times/TIMESBI.TTF-32-BoldItalic.woff) format("woff");
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap
+  }
+</style>

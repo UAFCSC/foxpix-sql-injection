@@ -1,0 +1,28 @@
+<html lang="en">
+
+<head>
+  <title>Foxes! - Log In</title>
+  <%- include('_partials/head') %>
+</head>
+
+<body>
+  <h1>Log In</h1>
+
+  <a name="me" rel="nofollow"></a>  
+  <%- include('_partials/nav') %>
+  <hr>
+  
+  <p>Don't have an account? Create one <a href="/create-account">here</a>!</p>
+  <form action="/login" method="post">
+    <label for="username">Username:</label>
+    <input type="text" name="username" id="username" required>
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password" required>
+    <input type="submit" value="Log In">
+  </form>
+
+  <hr>
+  <center><img src="https://vistaserv.this-is-a-l.ink/requests/injection-tracker"></center>
+</body>
+
+</html>

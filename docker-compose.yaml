@@ -1,0 +1,23 @@
+version: '3'
+services:
+  web:
+    build: .
+    restart: 'no'
+    environment:
+      POSTGRES_URI: postgresql://postgres:pass@postgres:5432/postgres
+    ports:
+      - 8080:80
+
+  postgres:
+    image: postgres:12.4-alpine
+    restart: 'no'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: pass
+
+# Uncomment these lines for development access to the database
+  adminer:
+    image: adminer
+    restart: 'no'
+    ports:
+      - 8088:8080
