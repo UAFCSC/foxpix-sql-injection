@@ -23,13 +23,18 @@
     </tr>
   <% } %>
 
+  <!-- Populate table with information from the database -->
   <% for (const fox of foxes) { %>
     <tr>
-      <td><a href="/foxes?fox=<%= fox.id %>"><img src="<%= fox.url %>" alt="<%= fox.description %>"></a></td>
+      <!-- foxes.id and foxes.url column -->
+      <td><a href="/foxes?id=<%= fox.id %>"><img src="<%= fox.url %>" alt="<%= fox.description %>"></a></td>
+      <!-- foxes.description column -->
       <td><%= fox.description %></td>
+      <!-- foxes.likes column -->
       <td>Liked <%= fox.likes %> times</td>
     </tr>
   <% } %>
+  
   </table>
 
   <hr>

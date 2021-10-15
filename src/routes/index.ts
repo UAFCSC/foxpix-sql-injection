@@ -42,10 +42,10 @@ router.post('/create-account', async (req, res) => {
     res.render('create-account', { req, flash: 'User already exists' })
     return
   }
-  const id = snowflake.next()
   const client = await pool.connect()
   try {
-    await client.query(`INSERT INTO users VALUES (${id}, '${username}', '${password}', false)`)
+    const id = snowflake.next()
+    await client.query(`INSERT INTO users (id, username, password, admin) VALUES (${id}, '${username}', '${password}', false)`)
     res.cookie('session', id)
     res.redirect('/')
   } catch (err) {
@@ -95,7 +95,7 @@ router.post('/admin', async (req, res) => {
       const client = await pool.connect()
       try {
         await client.query(`UPDATE foxes SET url = '${url}', description = '${description}' WHERE id = ${actionId}`)
-        res.redirect(`/foxes?fox=${actionId}`)
+        res.redirect(`/foxes?id=${actionId}`)
       } catch (err) {
         res.status(500)
         res.render('admin', { req, flash: 'Unknown database error!' })
@@ -103,11 +103,10 @@ router.post('/admin', async (req, res) => {
         client.release()
       }
     } else {
-      const id = snowflake.next()
       const client = await pool.connect()
       try {
-        await client.query(`INSERT INTO foxes VALUES (${id}, '${url}', '${description}', 0)`)
-        res.redirect(`/foxes?fox=${id}`)
+        const inserted = await client.query(`INSERT INTO foxes (url, description, likes) VALUES ('${url}', '${description}', 0) RETURNING id`)
+        res.redirect(`/foxes?id=${inserted.rows[0].id}`)
       } catch (err) {
         res.status(500)
         res.render('admin', { req, flash: 'Unknown database error!' })

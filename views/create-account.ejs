@@ -16,8 +16,10 @@
     <p style="color: red"><%= flash %></p>
   <% } %>
   <form action="/create-account" method="post">
+    <!-- users.username column -->
     <label for="username">Username:</label>
     <input type="text" name="username" id="username" required>
+    <!-- users.password column -->
     <label for="password">Password:</label>
     <input type="password" name="password" id="password" required>
     <input type="submit" value="Create Account">

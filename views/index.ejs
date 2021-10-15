@@ -35,8 +35,11 @@
   <p>Just to prove to you that foxes are the best, here are lots of fox pictures that I've collected. Click one for more info!</p>
 
   <center>
+    <!-- Populate the page with foxes from the database -->
     <% for (const fox of foxes) { %>
-      <a href="/foxes?fox=<%= fox.id %>">
+      <!-- foxes.id column -->
+      <a href="/foxes?id=<%= fox.id %>">
+        <!-- foxes.url column -->
         <img src="<%= fox.url %>" alt="<%= fox.description %>" title="<%= fox.description %>">
       </a>
     <% } %>

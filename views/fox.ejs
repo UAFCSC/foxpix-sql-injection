@@ -13,8 +13,11 @@
   <hr>
   
   <% if (locals.fox) { %>
+    <!-- foxes.url column -->
     <img src="<%= fox.url %>" alt="<%= fox.description %>" title="<%= fox.description %>">
+    <!-- foxes.descrition column -->
     <p><%= fox.description %></p>
+    <!-- foxes.likes column -->
     <p>This fox has <%= fox.likes %> likes!</p>
 
     <% if (locals.flash) { %>
