@@ -1,6 +1,41 @@
 INSERT INTO users (username, password, admin) VALUES
+  ('happyelephant104', 'looking', false),
+  ('silverlion883', 'blueball', false),
+  ('blackcat538', 'call', false),
+  ('lazypanda833', 'kristy', false),
+  ('bluesnake996', 'tattoo', false),
+  ('bluetiger647', 'sebring', false),
+  ('angryladybug472', 'oldone', false),
+  ('whitemouse199', '353535', false),
+  ('sadfrog156', 'crave', false),
+  ('angryladybug543', 'colonel', false),
   ('katlyn', 'foxes_are_cute', true),
-  ('admin', 'hewwo', true),
+  ('crazysnake303', 'break', false),
+  ('blackrabbit385', 'smile', false),
+  ('crazyfrog417', 'duane', false),
+  ('greenmouse609', 'gators1', false),
+  ('notadmin', 'hewwo', true),
+  ('yellowpeacock629', 'tickling', false),
+  ('tinylion929', 'woody', false),
+  ('sadmeercat513', 'anders', false),
+  ('ticklishkoala870', 'frog', false),
+  ('whitekoala299', 'nine', false),
+  ('brownelephant473', 'asimov', false),
+  ('angryfish391', 'rockon', false),
+  ('purplepeacock643', 'edison', false),
+  ('sadpeacock413', 'browns', false),
+  ('silvermeercat675', 'bulls', false),
+  ('orangemouse552', '12345678', false),
+  ('lazyladybug919', 'greece', false),
+  ('happyfrog920', 'penny', false),
+  ('lazyduck695', 'dirty1', false),
+  ('orangemouse994', 'morrison', false),
+  ('crazybird521', 'sheridan', false),
+  ('lazywolf999', 'garrett', false),
+  ('yellowrabbit830', 'brittany', false),
+  ('angrypanda973', 'berger', false),
+  ('blueduck967', 'blackcat', false),
+  ('tinyleopard794', 'vernon', false),
   ('coolfox35', '5up3r53cur3', false);
 
 INSERT INTO foxes (url, description, likes) VALUES
@@ -51,5 +86,3 @@ INSERT INTO foxes (url, description, likes) VALUES
 ('https://this-is-a-l.ink/with/foxes/16/0009.gif', 'problem fox doesn''t mind the attention', 2),
 ('https://this-is-a-l.ink/with/foxes/16/0003.gif', 'fennek foxes falling in love', 1),
 ('https://this-is-a-l.ink/with/foxes/16/0007.gif', 'sleepy fennek showing off their paws', 2);
-
-SELECT
