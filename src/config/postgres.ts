@@ -12,8 +12,8 @@ export const isUnsafe = (...input: string[]): boolean => {
     return false
   }
   const dangerous = ['delete', 'drop']
-  const lower = input.join().toLowerCase()
-  return dangerous.find(s => lower.includes(s)) !== undefined
+  const loweredInput = input.join().toLowerCase()
+  return dangerous.find(s => loweredInput.includes(s)) !== undefined
 }
 
 export const getUser = async (id: string): Promise<User|null> => {
