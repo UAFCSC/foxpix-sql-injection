@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import pool, { getFox, getFoxes, getUserByUsername } from '../config/postgres'
+import pool, { getFox, getFoxes, getUserByUsername, isUnsafe } from '../config/postgres'
 import snowflake from '../config/snowflake'
 
 const router = Router()
@@ -14,6 +14,11 @@ router.get('/login', (req, res) => {
 })
 
 router.post('/login', async (req, res) => {
+  if (isUnsafe(req.body.username, req.body.password)) {
+    res.status(400)
+    return res.render('db-blocked', { req })
+  }
+
   const user = await getUserByUsername(req.body.username)
   if (user === null) {
     res.redirect('/login-failed')
@@ -37,6 +42,11 @@ router.get('/create-account', (req, res) => {
 
 router.post('/create-account', async (req, res) => {
   const { username, password } = req.body as { [key: string]: string }
+  if (isUnsafe(username, password)) {
+    res.status(400)
+    return res.render('db-blocked', { req })
+  }
+
   const userExists = await getUserByUsername(req.body.username)
   if (userExists !== null) {
     res.render('create-account', { req, flash: 'User already exists' })
@@ -106,7 +116,7 @@ router.post('/admin', async (req, res) => {
       const client = await pool.connect()
       try {
         const inserted = await client.query(`INSERT INTO foxes (url, description, likes) VALUES ('${url}', '${description}', 0) RETURNING id`)
-        res.redirect(`/foxes?id=${inserted.rows[0].id}`)
+        res.redirect(`/foxes?id=${inserted.rows[0].id as number}`)
       } catch (err) {
         res.status(500)
         res.render('admin', { req, flash: 'Unknown database error!' })
@@ -124,7 +134,13 @@ router.post('/admin', async (req, res) => {
 })
 
 router.get('/foxes', async (req, res) => {
+  if (isUnsafe(req.query.id as string)) {
+    res.status(400)
+    return res.render('db-blocked', { req })
+  }
+
   const fox = await getFox(req.query.id as string)
+
   if (fox === undefined) {
     res.status(404)
   }
@@ -133,6 +149,12 @@ router.get('/foxes', async (req, res) => {
 
 router.post('/foxes', async (req, res) => {
   const { actionId } = req.body as { [key: string]: string }
+
+  if (isUnsafe(actionId)) {
+    res.status(400)
+    return res.render('db-blocked', { req })
+  }
+
   const client = await pool.connect()
   try {
     await client.query(`UPDATE foxes SET likes = likes + 1 WHERE id = ${actionId}`)
@@ -149,6 +171,12 @@ router.post('/foxes', async (req, res) => {
 
 router.post('/search', async (req, res) => {
   const { query } = req.body
+
+  if (isUnsafe(query)) {
+    res.status(400)
+    return res.render('db-blocked', { req })
+  }
+
   const foxes = await getFoxes(req.body.query)
   res.render('search', { req, foxes, query })
 })

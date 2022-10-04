@@ -6,6 +6,16 @@ const pool = new Pool({
   connectionString: process.env.POSTGRES_URI
 })
 
+export const isUnsafe = (...input: string[]): boolean => {
+  if (process.env.SAFE_MODE?.toLowerCase() !== 'true') {
+    // If safe mode isn't on, don't attempt to validate anything
+    return false
+  }
+  const dangerous = ['delete', 'drop']
+  const lower = input.join().toLowerCase()
+  return dangerous.find(s => lower.includes(s)) !== undefined
+}
+
 export const getUser = async (id: string): Promise<User|null> => {
   const client = await pool.connect()
   try {
