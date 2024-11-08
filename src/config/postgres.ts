@@ -73,7 +73,7 @@ export const getFox = async (id: string): Promise<Fox|null> => {
 export const getFoxes = async (search = ''): Promise<Fox[]> => {
   const client = await pool.connect()
   try {
-    let session = await client.query<Fox>(`SELECT * FROM foxes WHERE description LIKE '%${search}%'`)
+    let session = await client.query<Fox>(`SELECT * FROM foxes WHERE description LIKE '%${search}%' ORDER BY likes DESC`)
     if (Array.isArray(session)) {
       session = session[session.length - 1]
     }
