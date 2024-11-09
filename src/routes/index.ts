@@ -178,7 +178,7 @@ router.post('/search', async (req, res) => {
   }
 
   const foxes = await getFoxes(req.body.query)
-  res.render('search', { req, foxes, query })
+  res.render('search', { req, ...foxes, query })
 })
 
 export default router

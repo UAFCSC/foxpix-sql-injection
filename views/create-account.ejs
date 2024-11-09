@@ -8,12 +8,12 @@
 <body>
   <h1>Account Creation</h1>
 
-  <a name="me" rel="nofollow"></a>  
+  <a name="me" rel="nofollow"></a>
   <%- include('_partials/nav') %>
   <hr>
   <p>Make sure your password is nice and secure!</p>
   <% if (locals.flash) { %>
-    <p style="color: red"><%= flash %></p>
+    <p style="color: red"><%- flash %></p>
   <% } %>
   <form action="/create-account" method="post">
     <!-- users.username column -->

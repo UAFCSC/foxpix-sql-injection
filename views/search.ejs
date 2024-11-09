@@ -8,12 +8,12 @@
 <body>
   <h1>Search</h1>
 
-  <a name="me" rel="nofollow"></a>  
+  <a name="me" rel="nofollow"></a>
   <%- include('_partials/nav') %>
   <hr>
-  
+
   <p>
-    Results for "<%= query %>"
+    Results for "<%- query %>"
   </p>
 
   <table>
@@ -23,18 +23,22 @@
     </tr>
   <% } %>
 
+  <% if (err) { %>
+    <%= err %>
+  <% }%>
+
   <!-- Populate table with information from the database -->
   <% for (const fox of foxes) { %>
     <tr>
       <!-- foxes.id and foxes.url column -->
-      <td><a href="/foxes?id=<%= fox.id %>"><img src="<%= fox.url %>" alt="<%= fox.description %>"></a></td>
+      <td><a href="/foxes?id=<%- fox.id %>"><img src="<%- fox.url %>" alt="<%- fox.description %>"></a></td>
       <!-- foxes.description column -->
-      <td><%= fox.description %></td>
+      <td><%- fox.description %></td>
       <!-- foxes.likes column -->
-      <td>Liked <%= fox.likes %> times</td>
+      <td>Liked <%- fox.likes %> times</td>
     </tr>
   <% } %>
-  
+
   </table>
 
   <hr>

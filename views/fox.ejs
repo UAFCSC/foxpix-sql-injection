@@ -8,27 +8,27 @@
 <body>
   <h1>View Fox</h1>
 
-  <a name="me" rel="nofollow"></a>  
+  <a name="me" rel="nofollow"></a>
   <%- include('_partials/nav') %>
   <hr>
-  
+
   <% if (locals.fox) { %>
     <!-- foxes.url column -->
-    <img src="<%= fox.url %>" alt="<%= fox.description %>" title="<%= fox.description %>">
+    <img src="<%- fox.url %>" alt="<%- fox.description %>" title="<%- fox.description %>">
     <!-- foxes.descrition column -->
-    <p><%= fox.description %></p>
+    <p><%- fox.description %></p>
     <!-- foxes.likes column -->
-    <p>This fox has <%= fox.likes %> likes!</p>
+    <p>This fox has <%- fox.likes %> likes!</p>
 
     <% if (locals.flash) { %>
-      <p style="color: red"><%= flash %></p>
+      <p style="color: red"><%- flash %></p>
     <% } %>
     <table>
       <tr>
         <td>
           <form action="" method="post">
             <input type="hidden" name="action" value="like">
-            <input type="hidden" name="actionId" value="<%= fox.id %>">
+            <input type="hidden" name="actionId" value="<%- fox.id %>">
             <input type="submit" value="Like Fox">
           </form>
         </td>
@@ -36,14 +36,14 @@
         <td>
           <form action="/admin" method="post">
             <input type="hidden" name="action" value="view-edit">
-            <input type="hidden" name="actionId" value="<%= fox.id %>">
+            <input type="hidden" name="actionId" value="<%- fox.id %>">
             <input type="submit" value="Edit Fox">
           </form>
         </td>
         <td>
           <form action="/admin" method="post">
             <input type="hidden" name="action" value="delete">
-            <input type="hidden" name="actionId" value="<%= fox.id %>">
+            <input type="hidden" name="actionId" value="<%- fox.id %>">
             <input type="submit" value="Delete Fox">
           </form>
         </td>

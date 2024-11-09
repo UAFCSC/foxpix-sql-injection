@@ -70,18 +70,21 @@ export const getFox = async (id: string): Promise<Fox|null> => {
   }
 }
 
-export const getFoxes = async (search = ''): Promise<Fox[]> => {
+export const getFoxes = async (search = ''): Promise<{ foxes: Fox[], err?: any }> => {
   const client = await pool.connect()
   try {
     let session = await client.query<Fox>(`SELECT * FROM foxes WHERE description LIKE '%${search}%' ORDER BY likes DESC`)
     if (Array.isArray(session)) {
       session = session[session.length - 1]
     }
-    return session.rows
+    return {
+      foxes: session.rows,
+      err: null
+    }
   } catch (err) {
     console.log(search)
     console.log(err)
-    return []
+    return { foxes: [], err }
   } finally {
     client.release()
   }

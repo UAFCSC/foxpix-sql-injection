@@ -42,9 +42,9 @@
     <!-- Populate the page with foxes from the database -->
     <% for (const fox of foxes) { %>
       <!-- foxes.id column -->
-      <a href="/foxes?id=<%= fox.id %>">
+      <a href="/foxes?id=<%- fox.id %>">
         <!-- foxes.url column -->
-        <img src="<%= fox.url %>" alt="<%= fox.description %>" title="<%= fox.description %>">
+        <img src="<%- fox.url %>" alt="<%- fox.description %>" title="<%- fox.description %>">
       </a>
     <% } %>
   </center>

@@ -9,7 +9,7 @@
       </td>
       <td>
         <% if (req.user) { %>
-          Logged in as <%= req.user.username %>! <a href="/logout">Log Out</a>.
+          Logged in as <%- req.user.username %>! <a href="/logout">Log Out</a>.
           <% if (req.user.admin) { %>
             <a href="/admin">Admin Dashboard</a>.
           <% } %>
