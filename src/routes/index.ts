@@ -5,7 +5,7 @@ import snowflake from '../config/snowflake'
 const router = Router()
 
 router.get('/', async (req, res) => {
-  const foxes = await getFoxes()
+  const { foxes } = await getFoxes()
   res.render('index', { req, foxes })
 })
 
